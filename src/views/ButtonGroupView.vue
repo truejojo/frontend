@@ -14,4 +14,3 @@ const searchData = () => console.log('search');
   <ButtonView @click="resetEmployeeForm()" class="btn-info"> Reset Form </ButtonView>
 </template>
 
-<style></style>

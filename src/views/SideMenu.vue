@@ -1,7 +1,3 @@
-<script setup>
-import { RouterLink } from "vue-router";
-</script>
-
 <template>
   <ul class="nav flex-column">
     <li class="nav-item">
@@ -14,5 +10,3 @@ import { RouterLink } from "vue-router";
     </li>
   </ul>
 </template>
-
-<style></style>

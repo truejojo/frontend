@@ -1,6 +1,3 @@
-<script setup>
-
-</script>
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
@@ -21,7 +18,3 @@
     </div>
     </nav>
 </template>
-
-<style>
-
-</style>
