@@ -1,21 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/HomePage.vue";
 
-import TopMenu from "../components/TopMenu.vue";
-import SideMenu from "../components/SideMenu.vue";
-import Form from "../components/FormView.vue";
-import Table from "../components/TableView.vue";
-import ButtonGroupView from "../components/ButtonGroupView.vue";
+import TopMenu from "../views/TopMenu.vue";
+import SideMenu from "../views/SideMenu.vue";
+import Form from "../views/FormView.vue";
+import Table from "../views/TableView.vue";
+import ButtonGroupView from "../views/ButtonGroupView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.BASE_URL),
   routes: [
     {
       path: "/",
+      name: "home",
       component: Home,
       children: [
         {
           path: "",
+          name: "views",
           components: {
             topMenu: TopMenu,
             sideMenu: SideMenu,

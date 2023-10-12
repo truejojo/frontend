@@ -12,7 +12,8 @@
           <router-view name="form"></router-view>
         </div>
         <div class="row">
-          <router-view items="items" name="table"></router-view>
+          <router-view name="table"></router-view>
+          <!-- <router-view name="table" items="items"></router-view> -->
         </div>
       </div>
       <div class="col-12 col-md-2">
