@@ -20,6 +20,7 @@ watch(employeeID, () => fetchEmployee());
         <input
           class="form-control"
           maxlength="80"
+          placeholder="Vorname..."
           id="vorname"
           type="text"
           v-model="employee.firstName"
@@ -30,6 +31,7 @@ watch(employeeID, () => fetchEmployee());
         <input
           class="form-control"
           maxlength="80"
+          placeholder="Nachname..."
           id="nachname"
           type="text"
           v-model="employee.lastName"
@@ -40,15 +42,18 @@ watch(employeeID, () => fetchEmployee());
         <input
           class="form-control"
           maxlength="80"
+          placeholder="Email..."
           id="email"
           type="email"
           v-model="employee.email"
         />
       </div>
       <div class="mb-3">
+        <label for="textarea" class="form-label">Beschreibung</label>
         <textarea
           class="form-control"
           id="textarea"
+          placeholder="Beschreibung..."
           rows="3"
           maxlength="500"
           v-model="employee.description"

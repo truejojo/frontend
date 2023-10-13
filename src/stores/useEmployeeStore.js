@@ -9,10 +9,10 @@ export const useEmployeeStore = defineStore('employee', {
     employees: [],
     employee: {
       _id: null,
-      firstName: 'Vorname hier...',
-      lastName: 'Nachname hier...',
-      email: 'Email hier...',
-      description: 'Beschreibung hier...'
+      firstName: '',
+      lastName: '',
+      email: '',
+      description: ''
     },
     loading: false,
     error: null
@@ -20,7 +20,6 @@ export const useEmployeeStore = defineStore('employee', {
 
   actions: {
     async fetchEmployees() {
-      this.employees = [];
       this.loading = true;
       this.error = null;
 
@@ -34,17 +33,27 @@ export const useEmployeeStore = defineStore('employee', {
       }
     },
 
-    fetchEmployee() {
-      this.employee = this.employees.find((employee) => employee._id === this.employeeID);
+    async fetchEmployee() {
+      this.loading = true;
+      this.error = null;
+
+      try {
+        const response = await axios.get(`${URL}/get/${this.employeeID}`);
+        this.employee = response.data;
+      } catch (error) {
+        this.error = error;
+      } finally {
+        this.loading = false;
+      }
     },
 
     async addNewEmployee() {
       this.loading = true;
       this.error = null;
-      
+
       try {
         if (this.employee._id === null) {
-          await axios.post(`${URL}/new`, this.employee);
+          await axios.post(`${URL}/new/`, this.employee);
         } else {
           await axios.put(`${URL}/update/${this.employeeID}`, this.employee);
         }
@@ -53,7 +62,7 @@ export const useEmployeeStore = defineStore('employee', {
       } catch (error) {
         this.error = error;
       } finally {
-        this.loading = false;   
+        this.loading = false;
       }
     },
 
@@ -72,15 +81,32 @@ export const useEmployeeStore = defineStore('employee', {
       }
     },
 
+    async searchEmployees() {
+      this.loading = true;
+      this.error = null;
+      const query = JSON.stringify(this.employee);
+
+      try {
+        const response = await axios.get(`${URL}/search/`, {
+          // Senden Sie die Suchanfrage an das Backend
+          params: { query }
+        });
+        this.employees = response.data;
+      } catch (error) {
+        this.error = error;
+      } finally {
+        this.loading = false;
+      }
+    },
+
     resetEmployeeForm() {
       this.employee = {
         _id: null,
-        firstName: 'Vorname hier...',
-        lastName: 'Nachname hier...',
-        email: 'Email hier...',
-        description: 'Beschreibung hier...'
+        firstName: '',
+        lastName: '',
+        email: '',
+        description: ''
       };
-
-    },
+    }
   }
 });

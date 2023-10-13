@@ -25,7 +25,7 @@ const { employeeID, employees, loading, error } = storeToRefs(useEmployeeStore()
 const { fetchEmployees } = useEmployeeStore();
 
 fetchEmployees();
-const handleEmployeeID = (id) => employeeID.value = id;
+const handleEmployeeID = (id) => (employeeID.value = id);
 </script>
 
 <template>
@@ -50,11 +50,12 @@ const handleEmployeeID = (id) => employeeID.value = id;
         v-for="(employee, index) in employees"
         :key="employee._id"
         @click="handleEmployeeID(employee._id)"
+        role="button"
       >
-        <td role="button">{{ index + 1 }}</td>
-        <td role="button">{{ employee.firstName }}</td>
-        <td role="button">{{ employee.lastName }}</td>
-        <td role="button">{{ employee.email }}</td>
+        <td>{{ index + 1 }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.email }}</td>
       </tr>
     </tbody>
   </table>
