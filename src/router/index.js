@@ -1,23 +1,23 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../pages/HomePage.vue";
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../pages/HomePage.vue';
 
-import TopMenu from "../views/TopMenu.vue";
-import SideMenu from "../views/SideMenu.vue";
-import Form from "../views/FormView.vue";
-import Table from "../views/TableView.vue";
-import ButtonGroupView from "../views/ButtonGroupView.vue";
+import TopMenu from '../views/TopMenu.vue';
+import SideMenu from '../views/SideMenu.vue';
+import Form from '../views/FormView.vue';
+import Table from '../views/TableView.vue';
+import ButtonGroupView from '../views/ButtonGroupView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.BASE_URL),
   routes: [
     {
-      path: "/",
-      name: "home",
+      path: '/',
+      name: 'home',
       component: Home,
       children: [
         {
-          path: "",
-          name: "views",
+          path: '',
+          name: 'views',
           components: {
             topMenu: TopMenu,
             sideMenu: SideMenu,
@@ -25,30 +25,35 @@ const router = createRouter({
             table: Table,
             buttonGroupView: ButtonGroupView
           },
-          /**
-           * prosps: {
-           *  table: {
-           *    name: persontable
-           *    url: /person
-           * }
-           * }
-           */
-        },
-      ],
+
+          prosps: {
+            buttonGroupView: {
+              checkFormInput: Function
+            },
+            form: {
+              v$: Object
+            }
+            //  table: {
+            //    name: persontable
+            //    url: /person
+            //   }
+          }
+        }
+      ]
     },
     {
-      path: "/fahrzeuge",
+      path: '/fahrzeuge',
       component: Home,
       children: [
         {
-          path: "",
+          path: '',
           components: {
             topMenu: TopMenu,
             sideMenu: SideMenu,
             form: Form,
             table: Table,
             buttonGroupView: ButtonGroupView
-          },
+          }
           /**
            * prosps: {
            *  table: {
@@ -57,10 +62,10 @@ const router = createRouter({
            * }
            * }
            */
-        },
-      ],
+        }
+      ]
     }
-  ],
+  ]
 });
 
 export default router;

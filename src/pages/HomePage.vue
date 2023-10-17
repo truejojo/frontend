@@ -1,3 +1,9 @@
+<script setup>
+import { useEmployeeVuelidate } from '../composables/useEmployeeVuelidate';
+
+const { v$, checkFormInput } = useEmployeeVuelidate();
+</script>
+
 <template>
   <div class="container">
     <div class="row mb-3">
@@ -9,7 +15,7 @@
       </div>
       <div class="col-12 col-md-8">
         <div class="row mb-3">
-          <router-view name="form"></router-view>
+          <router-view name="form" :v$="v$"></router-view>
         </div>
         <div class="row">
           <router-view name="table"></router-view>
@@ -17,7 +23,7 @@
         </div>
       </div>
       <div class="col-12 col-md-2">
-        <router-view name="buttonGroupView"></router-view>
+        <router-view name="buttonGroupView" :checkFormInput="checkFormInput"></router-view>
       </div>
     </div>
   </div>
