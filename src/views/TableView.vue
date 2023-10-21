@@ -25,6 +25,10 @@ const { employeeID, employees, loading, error } = storeToRefs(useEmployeeStore()
 const { fetchEmployees } = useEmployeeStore();
 
 fetchEmployees();
+
+/**
+ * Die store employeeID wird auf die ausgewählte id gesetzt
+ */
 const handleEmployeeID = (id) => (employeeID.value = id);
 </script>
 

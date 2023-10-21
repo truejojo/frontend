@@ -19,6 +19,9 @@ export const useEmployeeStore = defineStore('employee', {
   }),
 
   actions: {
+    /**
+     * gibt alle Mitarbeiter zurück
+     */
     async fetchEmployees() {
       this.loading = true;
       this.error = null;
@@ -33,6 +36,9 @@ export const useEmployeeStore = defineStore('employee', {
       }
     },
 
+    /**
+     * gibt einen Mitarbeiter anhand der id zurück
+     */
     async fetchEmployee() {
       this.loading = true;
       this.error = null;
@@ -47,6 +53,10 @@ export const useEmployeeStore = defineStore('employee', {
       }
     },
 
+    /**
+     * sendet Eingabe Werte an das backend
+     * um einen neuen Mitarbeiter anzulegen
+     */
     async addNewEmployee() {
       this.loading = true;
       this.error = null;
@@ -66,6 +76,10 @@ export const useEmployeeStore = defineStore('employee', {
       }
     },
 
+    /**
+     * sendet die id an das backend
+     * um den  Mitarbeiter zu löschen
+     */
     async deleteEmployee() {
       this.loading = true;
       this.error = null;
@@ -81,6 +95,10 @@ export const useEmployeeStore = defineStore('employee', {
       }
     },
 
+    /**
+     * sendet die Suchanfrage an das backend
+     * um anhand der "queries" die entsprechenden Mitarbeiter zu filtern
+     */
     async searchEmployees() {
       this.loading = true;
       this.error = null;
@@ -88,7 +106,6 @@ export const useEmployeeStore = defineStore('employee', {
 
       try {
         const response = await axios.get(`${URL}/search/`, {
-          // Senden Sie die Suchanfrage an das Backend
           params: { query }
         });
         this.employees = response.data;
@@ -99,6 +116,9 @@ export const useEmployeeStore = defineStore('employee', {
       }
     },
 
+    /**
+     * setzt die Form auf default Werte
+     */
     resetEmployeeForm() {
       this.employee = {
         _id: null,
