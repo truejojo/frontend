@@ -1,5 +1,13 @@
 # frontend
 
+## pinia
+
+https://blog.logrocket.com/complex-vue-3-state-management-pinia/
+
+## composables
+
+https://javascript.plainenglish.io/10-useful-custom-hooks-with-vue-js-37f0fd42ce0d
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
